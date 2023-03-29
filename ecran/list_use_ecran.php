@@ -133,7 +133,7 @@
 				<th>caracteristique</th>
 				<th>etat</th>
 				<th>Date use</th>
-        		<th>pc N°serie</th>
+        		<th>PC N°serie</th>
 				<th>action</th>
 			</tr>
 		</thead>

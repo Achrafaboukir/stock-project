@@ -169,7 +169,7 @@ if (!empty($codebar)) {
                 <th>marque</th>
                 <th>etat</th>
                 <th>Date use</th>
-                <th>N°Serie</th>
+                <th> PC N°Serie</th>
             </tr>
         </thead>
         <tbody>
@@ -221,7 +221,7 @@ if (!empty($codebar)) {
                 <th>caracteristique</th>
                 <th>etat</th>
                 <th>Date use</th>
-                <th>N°Serie</th>
+                <th>PC N°Serie</th>
             </tr>
         </thead>
         <tbody>
@@ -272,7 +272,7 @@ if (!empty($codebar)) {
 				<th>caracteristique</th>
 				<th>etat</th>
 				<th>Date use</th>
-        		<th>pc N°serie</th>
+        		<th>PC N°serie</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -322,7 +322,7 @@ if (!empty($codebar)) {
 				<th>caracteristique</th>
 				<th>etat</th>
 				<th>Date use</th>
-				<th>N°Serie</th>
+				<th>PC N°Serie</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -381,8 +381,7 @@ if (!empty($codebar)) {
 				<th>marque</th>
 				<th>etat</th>
 				<th>Date use</th>
-                <th>N°Serie</th>
-				<th>action</th>
+                <th>PC N°Serie</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -428,7 +427,7 @@ if (!empty($codebar)) {
 				<th>caracteristique</th>
 				<th>etat</th>
 				<th>Date use</th>
-				<th>N°Serie</th>
+				<th>PC N°Serie</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -485,7 +484,7 @@ if (!empty($codebar)) {
 					<th>caracteristique</th>
 					<th>etat</th>
 					<th>Date use</th>
-					<th>N°Serie</th>
+					<th>PC N°Serie</th>
 				</tr>
 			</thead>
 			<tbody>

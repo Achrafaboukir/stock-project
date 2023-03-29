@@ -131,7 +131,7 @@
 				<th>caracteristique</th>
 				<th>etat</th>
 				<th>Date use</th>
-        		<th>N°Serie</th>
+        		<th>PC N°Serie</th>
 				<th>action</th>
 			</tr>
 		</thead>
