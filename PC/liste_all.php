@@ -47,12 +47,10 @@
   }
   
   th {
-    background-color: #f2f2f2;
+    background-color: #d4efef;
   }
   
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+  
   
   a {
     color: blue;
@@ -170,7 +168,7 @@
       $Nom_de_Machine = $_POST['Nom_de_Machine'];
       $proprietaire =$_POST['proprietaire'];
 
-            $query = "SELECT * FROM pcstock where 1=1 ";
+            $query = "SELECT * FROM pcstock where etat='in use' or etat='in stock' or etat='in maintenance' ";
             if (!empty($codebar)) {
               $query .= " AND codebar LIKE '%$codebar%'";
             }
