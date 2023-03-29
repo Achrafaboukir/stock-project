@@ -94,9 +94,13 @@ if ($etat == "in maintenance") {
         $stmt = $conn->prepare("UPDATE pcstock SET etat='$etat' where codebar='$codebar' or NSerie='$NSerie';");
         $stmt->execute();
         header("Location: list_maintenance.php");
-    }else{
-        echo 'the asset must be in use first ';
-    }
+        }else{
+          $stmt = $conn->prepare("INSERT INTO suivi_maintenance_pc (codebar,date_maintenance,technicien,audit_rapport,NSerie)VALUES('$codebar','$date_maintenance','$technicien','$audit','$NSerie'); ");
+          $stmt->execute();
+          $stmt = $conn->prepare("UPDATE pcstock SET etat='$etat' where codebar='$codebar' or NSerie='$NSerie';");
+          $stmt->execute();
+          header("Location: list_maintenance.php");
+        }
 }
 
 $date_retour=isset($_POST['date_return']) ? $_POST['date_return'] : '';
