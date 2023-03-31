@@ -143,7 +143,6 @@
 				<th>Etat</th>
 				<th>Nom de Machine</th>
 				<th>Date de formatage</th>
-				<th>Site</th>
 				<th>Type PC</th>
 				<th>Marque PC</th>
 				<th>Codebar</th>
@@ -187,16 +186,30 @@ if ($rows < 6) {
   echo "<h2 class='alert'> There are only $rows rows in the stock </h2>";
 }
 echo "<h4> $rows item";
+$nomCounts = array();
+
 			while ($row = mysqli_fetch_assoc($result)) {
+        $nom = $row['Nom_de_Machine'];
+        if (!isset($nomCounts[$nom])) {
+            $nomCounts[$nom] = 0;
+        }
+        $nomCounts[$nom]++;
+    
+        // Add a style attribute to the table row if the count of this Nom_de_Machine is greater than 1
+        $style = "";
+        if ($nomCounts[$nom] > 1) {
+            $style = "style='background-color: red;'";
+        }
+    
+        // Output the table row with the style attribute
 				echo "<tr>";
-        echo "<td><a href='info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+        echo "<td><a href='http://10.15.17.131/circet/info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
         echo "<td>".$row['return_value']."</td>";
 				echo "<td>".$row['localisation']."</td>";
         echo "<td>".$row['proprietaire']."</td>";
 				echo "<td>".$row['etat']."</td>";
-				echo "<td>".$row['Nom_de_Machine']."</td>";
+				echo "<td $style>".$row['Nom_de_Machine']."</td>";
 				echo "<td>".$row['Date_de_formatage']."</td>";
-				echo "<td>".$row['Site']."</td>";
 				echo "<td>".$row['Type_PC']."</td>";
 				echo "<td>".$row['Marque_PC']."</td>";
 				echo "<td>".$row['NSerie']."</td>";

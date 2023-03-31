@@ -212,7 +212,7 @@ while ($row = mysqli_fetch_assoc($result)) {
   // Output the table row with the style attribute
 
 
-  echo "<td><a href='info.php?codebar=" . $row['codebar'] . "'>" . $row['codebar'] . "</a></td>";
+  echo "<td><a href='http://10.15.17.131/circet/info.php?codebar=" . $row['codebar'] . "'>" . $row['codebar'] . "</a></td>";
   echo "<td>" . $row['NSerie'] . "</td>";
   echo "<td>" . $row['return_value'] . "</td>";
   echo "<td>" . $row['localisation'] . "</td>";

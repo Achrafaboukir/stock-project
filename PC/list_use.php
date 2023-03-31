@@ -197,16 +197,28 @@ if (!empty($prenom)) {
 			if (!$result) {
 				die("Query failed: " . mysqli_error($conn)); // Print error message and stop execution if the query fails
 			}
-			while ($row = mysqli_fetch_assoc($result)) { // Loop through the result and output the data
+      $nomCounts = array();
+			while ($row = mysqli_fetch_assoc($result)) { 
+        $nom = $row['Nom_de_Machine'];
+        if (!isset($nomCounts[$nom])) {
+            $nomCounts[$nom] = 0;
+        }
+        $nomCounts[$nom]++;
+    
+        // Add a style attribute to the table row if the count of this Nom_de_Machine is greater than 1
+        $style = "";
+        if ($nomCounts[$nom] > 1) {
+            $style = "style='background-color: red;'";
+        }// Loop through the result and output the data
                 echo "<tr>";
-                echo "<td><a href='info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+                echo "<td><a href='http://10.15.17.131/circet/info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
                 echo "<td>".$row['NSerie']."</td>";
                 echo "<td>".$row['localisation']."</td>";
                 echo "<td>".$row['Matricule']."</td>";
                 echo "<td>".$row['Nom']."</td>";
                 echo "<td>".$row['Prénom']."</td>";
 				        echo "<td>".$row['etat']."</td>";
-                echo "<td>".$row['Nom_de_Machine']."</td>";
+                echo "<td $style>".$row['Nom_de_Machine']."</td>";
                 echo "<td>".$row['Date_de_formatage']."</td>";
                 echo "<td>".$row['Manager']."</td>";
                 echo "<td>".$row['Pilote']."</td>";

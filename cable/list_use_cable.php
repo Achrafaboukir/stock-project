@@ -172,7 +172,7 @@
 				echo "<td>".$row['caracteristique']."</td>";
 				echo "<td>".$row['etat']."</td>";
 				echo "<td>".$row['date_use']."</td>";
-        echo "<td><a href='info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+        echo "<td><a href='http://10.15.17.131/circet/info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
                 echo "<td>";
                 echo "<a href='update_cable.php?rnum_serie=".$row['rnum_serie']."&modele=".$row['modele']."&marque=".$row['marque']."&caracteristique=".$row['caracteristique']."&etat=".$row['etat']."&date_use=".$row['date_use']."'>Update</a>";
                 echo "<a href='delete_cable.php?rnum_serie=".$row['rnum_serie']."'onclick='return confirmDelete()''>ENDOMAGER</a>";

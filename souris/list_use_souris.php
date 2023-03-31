@@ -178,7 +178,7 @@
 				echo "<td>".$row['Marque']."</td>";
 				echo "<td>".$row['etat']."</td>";
 				echo "<td>".$row['Date_use']."</td>";
-        echo "<td><a href='info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+        echo "<td><a href='http://10.15.17.131/circet/info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
                 echo "<td>";
                 echo "<a href='update_souris.php?NSerie=".$row['NSerie']."&Modele=".$row['Modele']."&Marque=".$row['Marque']."&etat=".$row['etat']."&Date_use=".$row['Date_use']."'>Update</a>";
                 echo "<a href='delete_souris.php?NSerie=".$row['NSerie']."'onclick='return confirmDelete()''>ENDOMAGER</a>";

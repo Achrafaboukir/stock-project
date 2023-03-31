@@ -169,7 +169,7 @@
 				echo "<td>".$row['marque']."</td>";
 				echo "<td>".$row['etat']."</td>";
 				echo "<td>".$row['date_use']."</td>";
-        echo "<td><a href='info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+        echo "<td><a href='http://10.15.17.131/circet/info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
                 echo "<td>";
                 echo "<a href='update_clavier.php?num_serie=".$row['num_serie']."&modele=".$row['modele']."&marque=".$row['marque']."&etat=".$row['etat']."&date_use=".$row['date_use']."'>Update</a>";
                 echo "<a href='delete_clavie.php?num_serie=".$row['num_serie']."'onclick='return confirmDelete()''>ENDOMAGER</a>";

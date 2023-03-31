@@ -73,23 +73,25 @@ span{
 
     <?php
     require 'connexion.php';
+    error_reporting(0);
+ini_set('display_errors', 0);
     $codebar = $_POST["codebar"];
     $check_pcstock_stmt = $conn->prepare("SELECT codebar FROM pcstock WHERE codebar = ? ");
-$check_pcstock_stmt->bind_param("s", $codebar);
-$check_pcstock_stmt->execute();
-$check_pcstock_result = $check_pcstock_stmt->get_result();
+    $check_pcstock_stmt->bind_param("s", $codebar);
+    $check_pcstock_stmt->execute();
+    $check_pcstock_result = $check_pcstock_stmt->get_result();
 
-$check_pcfermerstock_stmt = $conn->prepare("SELECT codebar FROM pcfermerstock WHERE codebar = ? ");
-$check_pcfermerstock_stmt->bind_param("s", $codebar );
-$check_pcfermerstock_stmt->execute();
-$check_pcfermerstock_result = $check_pcfermerstock_stmt->get_result();
-if ($check_pcstock_result->num_rows > 0) {
-  // Code bar already exists in pcstock table, display error message
-  echo "<span> Nserie  already exists in PC stock.</span>";
-} elseif ($check_pcfermerstock_result->num_rows > 0) {
-  // Code bar already exists in pcfermerstock table, display error message
-  echo "Error: code bar or the NSERIE already exists in PC fermer stock.";
-}
+    $check_pcfermerstock_stmt = $conn->prepare("SELECT codebar FROM pcfermerstock WHERE codebar = ? ");
+    $check_pcfermerstock_stmt->bind_param("s", $codebar );
+    $check_pcfermerstock_stmt->execute();
+    $check_pcfermerstock_result = $check_pcfermerstock_stmt->get_result();
+    if ($check_pcstock_result->num_rows > 0) {
+      // Code bar already exists in pcstock table, display error message
+      echo "<span> Nserie  already exists in PC stock.</span>";
+    } elseif ($check_pcfermerstock_result->num_rows > 0) {
+      // Code bar already exists in pcfermerstock table, display error message
+      echo "Error: code bar or the NSERIE already exists in PC fermer stock.";
+    }
 
 
 ?>
@@ -111,22 +113,24 @@ if ($check_pcstock_result->num_rows > 0) {
     <input type="text" name="NSerie" value="<?php echo isset($_POST['NSerie']) ? $_POST['NSerie'] : '' ?>" ><br><br>
     <?php
     require 'connexion.php';
+    error_reporting(0);
+ini_set('display_errors', 0);
     $NSerie = $_POST["NSerie"];
     $check_pcstock_stmt = $conn->prepare("SELECT NSerie FROM pcstock WHERE NSerie = ? ");
-$check_pcstock_stmt->bind_param("s", $NSerie);
-$check_pcstock_stmt->execute();
-$check_pcstock_result = $check_pcstock_stmt->get_result();
-$check_pcfermerstock_stmt = $conn->prepare("SELECT NSerie FROM pcfermerstock WHERE NSerie = ? ");
-$check_pcfermerstock_stmt->bind_param("s", $NSerie );
-$check_pcfermerstock_stmt->execute();
-$check_pcfermerstock_result = $check_pcfermerstock_stmt->get_result();
-if ($check_pcstock_result->num_rows > 0) {
-  // Code bar already exists in pcstock table, display error message
-  echo "<span> codebar  already exists in PC stock.</span>";
-} elseif ($check_pcfermerstock_result->num_rows > 0) {
-  // Code bar already exists in pcfermerstock table, display error message
-  echo "Error: code bar or the NSERIE already exists in PC fermer stock.";
-}
+    $check_pcstock_stmt->bind_param("s", $NSerie);
+    $check_pcstock_stmt->execute();
+    $check_pcstock_result = $check_pcstock_stmt->get_result();
+    $check_pcfermerstock_stmt = $conn->prepare("SELECT NSerie FROM pcfermerstock WHERE NSerie = ? ");
+    $check_pcfermerstock_stmt->bind_param("s", $NSerie );
+    $check_pcfermerstock_stmt->execute();
+    $check_pcfermerstock_result = $check_pcfermerstock_stmt->get_result();
+    if ($check_pcstock_result->num_rows > 0) {
+      // Code bar already exists in pcstock table, display error message
+      echo "<span> codebar  already exists in PC stock.</span>";
+    } elseif ($check_pcfermerstock_result->num_rows > 0) {
+      // Code bar already exists in pcfermerstock table, display error message
+      echo "Error: code bar or the NSERIE already exists in PC fermer stock.";
+    }
 
 ?>
     <label for="CPU">CPU:</label>
