@@ -1,12 +1,12 @@
 <?php require 'nav.php' ;?><br><br>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/PC/liste_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/PC/list_use.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/PC/list_maintenance.php" class="in-maintenance">In Maintenance</a></li>
-    <li><a href="http://localhost/circet/PC/list_stock.php" class="all">stock</a></li>
-    <li><a href="http://localhost/circet/PC/list_retour.php" class="all">retour</a></li>
-    <li><a href="http://localhost/circet/PC/list_pc_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
+    <li><a href="liste_all.php" class="all">All</a></li>
+    <li><a href="list_use.php" class="in-use">In Use</a></li>
+    <li><a href="list_maintenance.php" class="in-maintenance">In Maintenance</a></li>
+    <li><a href="list_stock.php" class="all">stock</a></li>
+    <li><a href="list_retour.php" class="all">retour</a></li>
+    <li><a href="list_pc_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
 
   </ul>
 </nav>
@@ -155,7 +155,7 @@
             $end_date=$_POST['end_date'];
             $technicien=$_POST['technicien'];
 
-            $query = "SELECT * FROM suivi_maintenance_pc";
+            $query = "SELECT * FROM suivi_maintenance_pc GROUP BY codebar  ";
             if (!empty($codebar)) {
                 $query .= " WHERE codebar LIKE '%$codebar%'";
                 if (!empty($start_date)) {
@@ -199,7 +199,7 @@
                 $countResult = mysqli_query($conn, $countQuery);
                 $countRow = mysqli_fetch_assoc($countResult);
                 $count = $countRow['count'];
-                echo "<td>".$count."</td>";
+                echo "<td><a href='http://10.15.17.131/circet/maintenance.php?codebar=".$row['codebar']."'>".$count."</a></td>";
                 
                 echo "<td>";
                 

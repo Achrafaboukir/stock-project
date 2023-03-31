@@ -1,12 +1,12 @@
 <?php require 'nav.php' ;?><br><br>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/PC/liste_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/PC/list_use.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/PC/list_maintenance.php" class="in-maintenance">In Maintenance</a></li>
-    <li><a href="http://localhost/circet/PC/list_stock.php" class="all">stock</a></li>
-    <li><a href="http://localhost/circet/PC/list_retour.php" class="all">retour</a></li>
-    <li><a href="http://localhost/circet/PC/list_pc_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
+    <li><a href="liste_all.php" class="all">All</a></li>
+    <li><a href="list_use.php" class="in-use">In Use</a></li>
+    <li><a href="list_maintenance.php" class="in-maintenance">In Maintenance</a></li>
+    <li><a href="list_stock.php" class="all">stock</a></li>
+    <li><a href="list_retour.php" class="all">retour</a></li>
+    <li><a href="list_pc_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
   </ul>
 </nav>
 <form class="form" method="post" action="list_retour.php">
@@ -133,8 +133,7 @@
     <thead>
         <tr>
             <th>N°Serie</th>
-            <th>owner name </th>
-            <th>last name</th>
+            <th> name </th>
             <th>return date</th>
             <th>raison return</th>
             <th>audit return</th>
@@ -151,7 +150,7 @@
         $start_date=$_POST['start_date'];
         $end_date=$_POST['end_date'];
 
-        $query = "SELECT * FROM retour_pc"; // Select all data from pcstock table
+        $query = "SELECT * FROM retour_pc group by codebar"; // Select all data from pcstock table
         if (!empty($codebar)) {
           $query .= " WHERE codebar LIKE '%$codebar%'";
           if (!empty($start_date)) {
@@ -178,8 +177,7 @@
         while ($row = mysqli_fetch_assoc($result)) { // Loop through the result and output the data
             echo "<tr>";
             echo "<td>".$row['codebar']."</td>";
-            echo "<td>".$row['name_owner']."</td>";
-            echo "<td>".$row['last_name']."</td>";
+            echo "<td>".$row['name_owner']." ".$row['last_name']."</td>";
             echo "<td>".$row['date_return']."</td>";
             echo "<td>".$row['raison_return']."</td>";
             echo "<td>".$row['audit_rapport']."</td>";
@@ -188,7 +186,7 @@
             $countRow = mysqli_fetch_assoc($countResult);
             $count = $countRow['count'];
 
-            echo "<td>".$count."</td>";
+            echo "<td><a href='http://10.15.17.131/circet/retour.php?codebar=".$row['codebar']."'>".$count."</a></td>";
             
             echo "<td>";
             $queryy = "SELECT * FROM pcstock where codebar='".$row['codebar']."'"; // Select all data from pcstock table

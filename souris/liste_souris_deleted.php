@@ -3,11 +3,11 @@
 <head><?php require 'navs.php' ;?><br><br>
 <nav class=nav>
 <ul>
-<li><a href="http://localhost/circet/souris/list_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/souris/list_use_souris.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/souris/list_retour_souris.php" class="in-maintenance">retour</a></li>
-    <li><a href="http://localhost/circet/souris/liste_souris.php" class="in-maintenance">stock</a></li>
-    <li><a href="http://localhost/circet/souris/liste_souris_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
+<li><a href="list_all.php" class="all">All</a></li>
+    <li><a href="list_use_souris.php" class="in-use">In Use</a></li>
+    <li><a href="list_retour_souris.php" class="in-maintenance">retour</a></li>
+    <li><a href="liste_souris.php" class="in-maintenance">stock</a></li>
+    <li><a href="liste_souris_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
  </ul>
 </nav><br><br>
 <form method="post" action="liste_souris_deleted.php">

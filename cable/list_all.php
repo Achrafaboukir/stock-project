@@ -1,10 +1,10 @@
 <?php require 'navc.php';?><br><br>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/cable/list_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/cable/list_use_cable.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/cable/list_retour_cable.php" class="in-maintenance">Roteur</a></li>
-    <li><a href="http://localhost/circet/cable/liste_cable_deleted.php" class="in-maintenance">ENDEMAGER</a></li>
+    <li><a href="list_all.php" class="all">All</a></li>
+    <li><a href="list_use_cable.php" class="in-use">In Use</a></li>
+    <li><a href="list_retour_cable.php" class="in-maintenance">Roteur</a></li>
+    <li><a href="liste_cable_deleted.php" class="in-maintenance">ENDEMAGER</a></li>
 
   </ul>
 </nav>

@@ -1,10 +1,10 @@
 <?php require 'navc.php';?><br><br>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/cable/list_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/cable/list_use_cable.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/cable/list_retour_cable.php" class="in-maintenance">Roteur</a></li>
-    <li><a href="http://localhost/circet/cable/liste_cable_deleted.php" class="in-maintenance">ENDEMAGER</a></li>
+    <li><a href="list_all.php" class="all">All</a></li>
+    <li><a href="list_use_cable.php" class="in-use">In Use</a></li>
+    <li><a href="list_retour_cable.php" class="in-maintenance">Roteur</a></li>
+    <li><a href="liste_cable_deleted.php" class="in-maintenance">ENDEMAGER</a></li>
 
   </ul>
 </nav>
@@ -172,7 +172,7 @@
 				echo "<td>".$row['caracteristique']."</td>";
 				echo "<td>".$row['etat']."</td>";
 				echo "<td>".$row['date_use']."</td>";
-        echo "<td><a href='http://localhost/circet/info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+        echo "<td><a href='info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
                 echo "<td>";
                 echo "<a href='update_cable.php?rnum_serie=".$row['rnum_serie']."&modele=".$row['modele']."&marque=".$row['marque']."&caracteristique=".$row['caracteristique']."&etat=".$row['etat']."&date_use=".$row['date_use']."'>Update</a>";
                 echo "<a href='delete_cable.php?rnum_serie=".$row['rnum_serie']."'onclick='return confirmDelete()''>ENDOMAGER</a>";

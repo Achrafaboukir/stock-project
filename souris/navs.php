@@ -3,7 +3,7 @@
   <ul>
   <li><a class='a' onclick="history.go(-1)">Return</a></li>
 
-  <li><a class='a' href="http://localhost/circet/navv.php">home</a></li>
+  <li><a class='a' href="http://10.15.17.131/circet/navv.php"><img src="http://10.15.17.131/circet/hhom.png" ></img></a></li>
     <li><a class='a' href="FormSourisStock.php">Add souri</a></li>
   </ul>
 </nav>
@@ -35,7 +35,10 @@ li {
   padding: 10px;
   transition: background-color 0.2s ease;
 }
-
+img {
+  width:25px;
+  height:25px;
+}
 .a:hover {
   background-color: #555;
 }

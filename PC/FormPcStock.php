@@ -46,6 +46,21 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #3e8e41;
 }
+button{
+  font-style:none;
+  width:200px;
+  height:30px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+.b{
+  font-style:none;
+  color:black;
+}
+span{
+  color:red;
+}
 
   </style>
 </head>
@@ -54,68 +69,99 @@ input[type="submit"]:hover {
   <h1>Add New PC Stock</h1>
   <form action="FormPcStock.php" method="POST">
     <label for="codebar">N°Serie:</label>
-    <input type="text" name="codebar" required><br><br>
+    <input type="text" name="codebar" value="<?php echo isset($_POST['codebar']) ? $_POST['codebar'] : '' ?>" required><br><br>
+
+    <?php
+    require 'connexion.php';
+    $codebar = $_POST["codebar"];
+    $check_pcstock_stmt = $conn->prepare("SELECT codebar FROM pcstock WHERE codebar = ? ");
+$check_pcstock_stmt->bind_param("s", $codebar);
+$check_pcstock_stmt->execute();
+$check_pcstock_result = $check_pcstock_stmt->get_result();
+
+$check_pcfermerstock_stmt = $conn->prepare("SELECT codebar FROM pcfermerstock WHERE codebar = ? ");
+$check_pcfermerstock_stmt->bind_param("s", $codebar );
+$check_pcfermerstock_stmt->execute();
+$check_pcfermerstock_result = $check_pcfermerstock_stmt->get_result();
+if ($check_pcstock_result->num_rows > 0) {
+  // Code bar already exists in pcstock table, display error message
+  echo "<span> Nserie  already exists in PC stock.</span>";
+} elseif ($check_pcfermerstock_result->num_rows > 0) {
+  // Code bar already exists in pcfermerstock table, display error message
+  echo "Error: code bar or the NSERIE already exists in PC fermer stock.";
+}
+
+
+?>
     <label for="localisation">Localisation:</label>
-    <input type="text" name="localisation" required><br><br>
+    <input type="text" name="localisation" value="<?php echo isset($_POST['localisation']) ? $_POST['localisation'] : '' ?>" required><br><br>
     <label for="etat">Etat:</label>
     <select name='etat'>
         <option>in stock</option>
     </select><br><br>
     <label for="Nom_de_Machine">Nom de Machine:</label>
-    <input type="text" name="Nom_de_Machine" required><br><br>
+    <input type="text" name="Nom_de_Machine" value="<?php echo isset($_POST['Nom_de_Machine']) ? $_POST['Nom_de_Machine'] : '' ?>" required><br><br>
     <label for="Date_de_formatage">Date de formatage:</label>
-    <input type="date" name="Date_de_formatage"><br><br>
-    <label for="Site">Site:</label>
-    <input type="text" name="Site" required><br><br>
+    <input type="date" name="Date_de_formatage" value="<?php echo isset($_POST['Date_de_formatage']) ? $_POST['Date_de_formatage'] : '' ?>"><br><br>
     <label for="Type_PC">Type PC:</label>
-    <input type="text" name="Type_PC" required><br><br>
+    <input type="text" name="Type_PC" value="<?php echo isset($_POST['Type_PC']) ? $_POST['Type_PC'] : '' ?>" required><br><br>
     <label for="Marque_PC">Marque PC:</label>
-    <input type="text" name="Marque_PC" required><br><br>
+    <input type="text" name="Marque_PC" value="<?php echo isset($_POST['Marque_PC']) ? $_POST['Marque_PC'] : '' ?>" required><br><br>
     <label for="NSerie">codebar:</label>
-    <input type="text" name="NSerie" ><br><br>
+    <input type="text" name="NSerie" value="<?php echo isset($_POST['NSerie']) ? $_POST['NSerie'] : '' ?>" ><br><br>
+    <?php
+    require 'connexion.php';
+    $NSerie = $_POST["NSerie"];
+    $check_pcstock_stmt = $conn->prepare("SELECT NSerie FROM pcstock WHERE NSerie = ? ");
+$check_pcstock_stmt->bind_param("s", $NSerie);
+$check_pcstock_stmt->execute();
+$check_pcstock_result = $check_pcstock_stmt->get_result();
+$check_pcfermerstock_stmt = $conn->prepare("SELECT NSerie FROM pcfermerstock WHERE NSerie = ? ");
+$check_pcfermerstock_stmt->bind_param("s", $NSerie );
+$check_pcfermerstock_stmt->execute();
+$check_pcfermerstock_result = $check_pcfermerstock_stmt->get_result();
+if ($check_pcstock_result->num_rows > 0) {
+  // Code bar already exists in pcstock table, display error message
+  echo "<span> codebar  already exists in PC stock.</span>";
+} elseif ($check_pcfermerstock_result->num_rows > 0) {
+  // Code bar already exists in pcfermerstock table, display error message
+  echo "Error: code bar or the NSERIE already exists in PC fermer stock.";
+}
+
+?>
     <label for="CPU">CPU:</label>
-    <input type="text" name="CPU" required><br><br>
+    <input type="text" name="CPU" value="<?php echo isset($_POST['CPU']) ? $_POST['CPU'] : '' ?>" required><br><br>
     <label for="RAM">RAM:</label>
-    <input type="text" name="RAM" required><br><br>
+    <input type="text" name="RAM" value="<?php echo isset($_POST['RAM']) ? $_POST['RAM'] : '' ?>" required><br><br>
     <label for="DD">DD:</label>
-    <input type="text" name="DD" required><br><br>
+    <input type="text" name="DD" value="<?php echo isset($_POST['DD']) ? $_POST['DD'] : '' ?>" required><br><br>
     <label for="GPU">GPU:</label>
-    <input type="text" name="GPU"><br><br>
+    <input type="text" name="GPU" value="<?php echo isset($_POST['GPU']) ? $_POST['GPU'] : '' ?>"><br><br>
     <label for="Mac_ethernet">Mac Ethernet:</label>
-    <input type="text" name="Mac_ethernet" required><br><br>
+    <input type="text" name="Mac_ethernet" value="<?php echo isset($_POST['Mac_ethernet']) ? $_POST['Mac_ethernet'] : '' ?>" required><br><br>
     <label for="Mac_WIFI">Mac WIFI:</label>
-    <input type="text" name="Mac_WIFI" required><br><br>
+    <input type="text" name="Mac_WIFI" value="<?php echo isset($_POST['Mac_WIFI']) ? $_POST['Mac_WIFI'] : '' ?>" required><br><br>
     <label for="Ancien_Nom_machine">Ancien Nom de Machine:</label>
-    <input type="text" name="Ancien_Nom_machine"><br><br>
-    <input type="submit" value="Add PC Stock">
+    <input type="text" name="Ancien_Nom_machine" value="<?php echo isset($_POST['Ancien_Nom_machine']) ? $_POST['Ancien_Nom_machine'] : '' ?>"><br><br>
+    <input type="submit" value="Add PC Stock"> <a class='b' href='http://10.15.17.131/circet/PC/list_stock.php'>List Stock</a>
   </form>
 </body>
 </html>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "circet1";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+require 'connexion.php';
 error_reporting(0);
 ini_set('display_errors', 0);
+        
 
 // Prepare SQL statement
-$stmt = $conn->prepare("INSERT INTO pcstock (codebar, localisation, etat, Nom_de_Machine, Date_de_formatage, Site, Type_PC, Marque_PC, NSerie, CPU, RAM, DD, GPU, Mac_ethernet, Mac_WIFI, Ancien_Nom_machine, date_added, proprietaire,return_value) VALUES (?, ?, ?, ?, ?,  ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(),?,?)");
+$stmt = $conn->prepare("INSERT INTO pcstock (codebar, localisation, etat, Nom_de_Machine, Date_de_formatage,  Type_PC, Marque_PC, NSerie, CPU, RAM, DD, GPU, Mac_ethernet, Mac_WIFI, Ancien_Nom_machine, date_added, proprietaire,return_value) VALUES (?, ?, ?, ?, ?,  ?,?, ?, ?, ?, ?, ?,  ?, ?, ?, NOW(),?,?)");
 
 // Assign a variable to the 18th parameter
 $proprietaire = 'STOCK';
 $return_value='NEW';
 
 // Bind parameters to statement
-$stmt->bind_param("ssssssssssssssssss", $codebar, $localisation, $etat, $Nom_de_Machine, $Date_de_formatage, $Site, $Type_PC, $Marque_PC, $NSerie, $CPU, $RAM, $DD, $GPU, $Mac_ethernet, $Mac_WIFI, $Ancien_Nom_machine, $proprietaire,$return_value);
+$stmt->bind_param("sssssssssssssssss", $codebar, $localisation, $etat, $Nom_de_Machine, $Date_de_formatage,  $Type_PC, $Marque_PC, $NSerie, $CPU, $RAM, $DD, $GPU, $Mac_ethernet, $Mac_WIFI, $Ancien_Nom_machine, $proprietaire,$return_value);
 
 // Set variables with form input values
 $codebar = $_POST["codebar"];
@@ -136,8 +182,8 @@ $Mac_WIFI = $_POST["Mac_WIFI"];
 $Ancien_Nom_machine = $_POST["Ancien_Nom_machine"];
 
 // Check if code bar already exists in pcstock table
-$check_pcstock_stmt = $conn->prepare("SELECT codebar FROM pcstock WHERE codebar = ? or NSerie = ?");
-$check_pcstock_stmt->bind_param("ss", $codebar, $NSerie);
+$check_pcstock_stmt = $conn->prepare("SELECT codebar FROM pcstock WHERE codebar = ? ");
+$check_pcstock_stmt->bind_param("s", $codebar);
 $check_pcstock_stmt->execute();
 $check_pcstock_result = $check_pcstock_stmt->get_result();
 

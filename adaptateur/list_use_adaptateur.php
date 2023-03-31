@@ -150,7 +150,7 @@
 				echo "<td>".$row['caracteristique']."</td>";
 				echo "<td>".$row['etat']."</td>";
 				echo "<td>".$row['date_use']."</td>";
-        echo "<td><a href='http://localhost/circet/info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+        echo "<td><a href='info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
                 echo "<td>";
                 echo "<a href='update_adaptateur.php?rnum_serie=".$row['rnum_serie']."&modele=".$row['modele']."&marque=".$row['marque']."&caracteristique=".$row['caracteristique']."&etat=".$row['etat']."&date_use=".$row['date_use']."'>Update</a>";
                 echo "<a href='delete_adaptateur.php?rnum_serie=".$row['rnum_serie']."'onclick='return confirmDelete()''>Delete</a>";

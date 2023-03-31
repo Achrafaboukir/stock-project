@@ -1,11 +1,11 @@
 <?php require 'navc.php';?><br><br>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/ecran/list_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/ecran/list_use_ecran.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/ecran/list_retour_ecran.php" class="retour">return</a></li>
-	<li><a href="http://localhost/circet/ecran/liste_ecran.php" class="retour">stock</a></li>
-	<li><a href="http://localhost/circet/ecran/liste_ecran_deleted.php" class="retour">endomager</a></li>
+    <li><a href="list_all.php" class="all">All</a></li>
+    <li><a href="list_use_ecran.php" class="in-use">In Use</a></li>
+    <li><a href="list_retour_ecran.php" class="retour">return</a></li>
+	<li><a href="liste_ecran.php" class="retour">stock</a></li>
+	<li><a href="liste_ecran_deleted.php" class="retour">endomager</a></li>
 
   </ul>
 </nav>

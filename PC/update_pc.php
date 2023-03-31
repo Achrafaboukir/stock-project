@@ -47,15 +47,13 @@ if ($etat == "in use") {
         $stmt = $conn->prepare( "UPDATE pc SET localisation='$localisation', Matricule='$Matricule', Nom='$Nom', Prénom='$Prenom', etat='$etat', 
         Nom_de_Machine='$Nom_de_Machine', Date_de_formatage='$Date_de_formatage', Manager='$Manager', Pilote='$Pilote', Site='$Site', Type_PC='$Type_PC', Marque_PC='$Marque_PC',
          NSerie='$NSerie', CPU='$CPU', RAM='$RAM', DD='$DD', GPU='$GPU', Mac_ethernet='$Mac_ethernet', Mac_WIFI='$Mac_WIFI', Ancien_Nom_machine='$Ancien_Nom_machine',
-         Using_date=now(),affictaion=(SELECT COUNT(*) + 1 FROM retour_pc WHERE codebar = $codebar), date_added_to_stock='$date_added_to_stock' WHERE codebar='$codebar' or NSerie='$NSerie';");
+         Using_date=now(),affictaion=(SELECT COUNT(*) + 1 FROM retour_pc WHERE codebar = '$codebar'), date_added_to_stock='$date_added_to_stock' WHERE codebar='$codebar' or NSerie='$NSerie';");
         $stmt->execute();
         $stmt = $conn->prepare("UPDATE pcstock SET localisation='$localisation', etat='$etat', Nom_de_Machine='$Nom_de_Machine', Date_de_formatage='$Date_de_formatage', Site='$Site', Type_PC='$Type_PC', Marque_PC='$Marque_PC', NSerie='$NSerie', CPU='$CPU', RAM='$RAM', DD='$DD', GPU='$GPU', Mac_ethernet='$Mac_ethernet', Mac_WIFI='$Mac_WIFI', Ancien_Nom_machine='$Ancien_Nom_machine', date_added='$date_added_to_stock',proprietaire='$Nom $Prenom' WHERE codebar='$codebar' or NSerie='$NSerie';");
         $stmt->execute();
         if($stmt->execute()){
           header("Location: list_use.php");
           exit();
-        }else{
-          echo 'the asset must be in use first';
         }
     } else {
         // Insert into pc table
@@ -95,7 +93,11 @@ if ($etat == "in maintenance") {
         $stmt->execute();
         header("Location: list_maintenance.php");
     }else{
-        echo 'the asset must be in use first ';
+      $stmt = $conn->prepare("INSERT INTO suivi_maintenance_pc (codebar,date_maintenance,technicien,audit_rapport,NSerie)VALUES('$codebar','$date_maintenance','$technicien','$audit','$NSerie'); ");
+      $stmt->execute();
+      $stmt = $conn->prepare("UPDATE pcstock SET etat='$etat' where codebar='$codebar' or NSerie='$NSerie';");
+      $stmt->execute();
+      header("Location: list_maintenance.php");
     }
 }
 
@@ -222,8 +224,6 @@ if (isset($_GET['etat'])) {
     <label for="Date_de_formatage">Date de formatage:</label>
     <input type="text" name="Date_de_formatage" value="<?php echo $row['Date_de_formatage']; ?>">
 
-    <label for="Site">Site:</label>
-    <input type="text" name="Site" value="<?php echo $row['Site']; ?>">
 
     <label for="Type_PC">Type PC:</label>
     <input type="text" name="Type_PC" value="<?php echo $row['Type_PC']; ?>">
@@ -258,7 +258,7 @@ if (isset($_GET['etat'])) {
     <label for="date_added">Date added to stock:</label>
     <input type="text" name="date_added" value="<?php echo $row['date_added_to_stock']; ?>">
 
-    <input type="submit" name="submit" value="Update">
+    <input type="submit" name="submit" value="Update"><button><a class='b' onclick="history.go(-1)">Return</a></button>
 </form>
 
 <?php mysqli_close($conn);}}} ?>
@@ -340,8 +340,6 @@ if (isset($_GET['codebar'])) {
     <label for="Date_de_formatage">Date de formatage:</label>
     <input type="text" name="Date_de_formatage" value="<?php echo $row['Date_de_formatage']; ?>">
 
-    <label for="Site">Site:</label>
-    <input type="text" name="Site" value="<?php echo $row['Site']; ?>">
 
     <label for="Type_PC">Type PC:</label>
     <input type="text" name="Type_PC" value="<?php echo $row['Type_PC']; ?>">
@@ -376,7 +374,7 @@ if (isset($_GET['codebar'])) {
     <label for="date_added">Date added to stock:</label>
     <input type="text" name="date_added" value="<?php echo $row['date_added']; ?>">
 
-    <input type="submit" name="submit" value="Update">
+    <input type="submit" name="submit" value="Update"> <button><a class='b' onclick="history.go(-1)">Return</a></button>
 </form>
 <?php mysqli_close($conn);}}} ?>
 <?php
@@ -462,8 +460,6 @@ if (isset($_GET['codebar'])) {
     <label for="Date_de_formatage">Date de formatage:</label>
     <input type="text" name="Date_de_formatage" value="<?php echo $row['Date_de_formatage']; ?>">
 
-    <label for="Site">Site:</label>
-    <input type="text" name="Site" value="<?php echo $row['Site']; ?>">
 
     <label for="Type_PC">Type PC:</label>
     <input type="text" name="Type_PC" value="<?php echo $row['Type_PC']; ?>">
@@ -498,7 +494,7 @@ if (isset($_GET['codebar'])) {
     <label for="date_added">Date added to stock:</label>
     <input type="text" name="date_added" value="<?php echo $row['date_added']; ?>">
 
-    <input type="submit" name="submit" value="Update">
+    <input type="submit" name="submit" value="Update"><button><a class='b' onclick="history.go(-1)">Return</a></button>
 </form>
 <?php mysqli_close($conn);}}} ?>
 
@@ -511,7 +507,7 @@ if (isset($_GET['etat'])) {
     $etat = $_GET['etat'];
     $NSerie = $_GET['NSerie'];
     if($etat=='in maintenance'){
-    $sql = "SELECT * from pc where codebar='$codebar'  or NSerie='$NSerie';";
+    $sql = "SELECT * from pcstock where codebar='$codebar'  or NSerie='$NSerie';";
     $result = $conn->query($sql);
   
     if ($result->num_rows == 1) {
@@ -536,20 +532,29 @@ if (isset($_GET['etat'])) {
   </select>
 
   <div id="divInput" style="<?php if ($row['etat'] != 'in use') echo 'display: none;'; ?>">
+      <?php
+
+       $sqll = "SELECT * from pc where codebar='$codebar' ;";
+       $resultt = $conn->query($sqll);
+     
+       if ($resultt->num_rows == 1) {
+         $roww = $resultt->fetch_assoc();
+         ?>
           <label for="Matricule">Matricule:</label>
-      <input type="text" id="Matricule" name="Matricule" value="<?php  echo $row['Matricule']; ?>"><br>
+      <input type="text" id="Matricule" name="Matricule" value="<?php  echo $roww['Matricule']; ?>"><br>
 
       <label for="Nom">Nom:</label>
-      <input type="text" id="Nom" name="Nom"  value="<?php echo $row['Nom']; ?>" ><br>
+      <input type="text" id="Nom" name="Nom"  value="<?php echo $roww['Nom']; ?>" ><br>
 
       <label for="Prénom">Prénom:</label>
-      <input type="text" id="Prénom" name="Prénom" value="<?php echo $row['Prénom']; ?>" ><br>
+      <input type="text" id="Prénom" name="Prénom" value="<?php echo $roww['Prénom']; ?>" ><br>
 
           <label for="Manager">Manager:</label>
-      <input type="text" id="Manager" name="Manager" value="<?php echo $row['Manager']; ?>" ><br>
+      <input type="text" id="Manager" name="Manager" value="<?php echo $roww['Manager']; ?>" ><br>
 
       <label for="Pilote">Pilote:</label>
-      <input type="text" id="Pilote" name="Pilote" value="<?php echo $row['Pilote']; ?>"><br>
+      <input type="text" id="Pilote" name="Pilote" value="<?php echo $roww['Pilote']; ?>"><br>
+      <?php } ?>
     </div>
     <div id="main" style="<?php if ($row['etat'] != 'in maintenance') echo 'display: none;'; ?>" >
     <?php 
@@ -589,8 +594,6 @@ if (isset($_GET['etat'])) {
     <label for="Date_de_formatage">Date de formatage:</label>
     <input type="text" name="Date_de_formatage" value="<?php echo $row['Date_de_formatage']; ?>">
 
-    <label for="Site">Site:</label>
-    <input type="text" name="Site" value="<?php echo $row['Site']; ?>">
 
     <label for="Type_PC">Type PC:</label>
     <input type="text" name="Type_PC" value="<?php echo $row['Type_PC']; ?>">
@@ -623,9 +626,9 @@ if (isset($_GET['etat'])) {
     <input type="text" name="Ancien_Nom_machine" value="<?php echo $row['Ancien_Nom_machine']; ?>">
 
     <label for="date_added">Date added to stock:</label>
-    <input type="text" name="date_added" value="<?php echo $row['date_added_to_stock']; ?>">
+    <input type="text" name="date_added" value="<?php echo $row['date_added']; ?>">
 
-    <input type="submit" name="submit" value="Update">
+    <input type="submit" name="submit" value="Update"><button><a class='b' onclick="history.go(-1)">Return</a></button>
 </form>
 <?php mysqli_close($conn);}}} ?>
 <style>
@@ -658,7 +661,18 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
-
+button{
+  font-style:none;
+  width:200px;
+  height:30px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+.b{
+  font-style:none;
+  color:white;
+}
 </style>
 
 <script>

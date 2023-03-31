@@ -3,10 +3,10 @@
 <head><?php require 'navc.php' ;?><br><br>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/discdur/list_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/discdur/list_use_discdur.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/discdur/list_retour_discdur.php" class="in-maintenance">Roteur</a></li>
-    <li><a href="http://localhost/circet/discdur/liste_discdur_deleted.php" class="in-maintenance">ENDEMAGER</a></li>
+    <li><a href="list_all.php" class="all">All</a></li>
+    <li><a href="list_use_discdur.php" class="in-use">In Use</a></li>
+    <li><a href="list_retour_discdur.php" class="in-maintenance">Roteur</a></li>
+    <li><a href="liste_discdur_deleted.php" class="in-maintenance">ENDEMAGER</a></li>
 
   </ul>
 </nav><br><br>

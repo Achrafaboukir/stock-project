@@ -3,7 +3,7 @@
   <ul>
   <li><a class='a' onclick="history.go(-1)">Return</a></li>
 
-  <li><a class='a' href="http://localhost/circet/navv.php">home</a></li>
+  <li><a class='a' href="http://10.15.17.131/circet/navv.php"><img src="http://10.15.17.131/circet/hhom.png" ></img> </a></li>
 
     <li><a class='a' href="FormCableStock.php">Add cable</a></li>
   </ul>
@@ -17,7 +17,10 @@ nav {
   height : 50px ;
   align-items : center ;
 }
-
+img {
+  width:25px;
+  height:25px;
+}
 ul {
   display: flex;
   list-style: none;

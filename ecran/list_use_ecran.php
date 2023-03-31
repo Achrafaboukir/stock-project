@@ -1,11 +1,11 @@
 <?php require 'navc.php';?>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/ecran/list_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/ecran/list_use_ecran.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/ecran/list_retour_ecran.php" class="retour">retour</a></li>
-	<li><a href="http://localhost/circet/ecran/liste_ecran.php" class="retour">stock</a></li>
-    <li><a href="http://localhost/circet/ecran/liste_ecran_deleted.php" class="retour">endomager</a></li>
+    <li><a href="ecran/list_all.php" class="all">All</a></li>
+    <li><a href="ecran/list_use_ecran.php" class="in-use">In Use</a></li>
+    <li><a href="ecran/list_retour_ecran.php" class="retour">retour</a></li>
+	<li><a href="ecran/liste_ecran.php" class="retour">stock</a></li>
+    <li><a href="ecran/liste_ecran_deleted.php" class="retour">endomager</a></li>
 
   </ul>
 </nav>
@@ -174,7 +174,7 @@
 				echo "<td>".$row['caracteristique']."</td>";
 				echo "<td>".$row['etat']."</td>";
 				echo "<td>".$row['date_use']."</td>";
-        echo "<td><a href='http://localhost/circet/info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+        echo "<td><a href='info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
                 echo "<td>";
                 echo "<a href='update_ecran.php?rnum_serie=".$row['rnum_serie']."&modele=".$row['modele']."&marque=".$row['marque']."&caracteristique=".$row['caracteristique']."&etat=".$row['etat']."&date_use=".$row['date_use']."'>Update</a>";
                 echo "<a href='delete_ecran.php?rnum_serie=".$row['rnum_serie']."'onclick='return confirmDelete()''>Delete</a>";

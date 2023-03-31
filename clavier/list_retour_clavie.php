@@ -1,10 +1,10 @@
 <?php require 'navc.php' ;?><br><br>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/clavier/list_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/clavier/list_use_clavie.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/clavier/list_retour_clavie.php" class="in-maintenance">ROTEUR</a></li>
-    <li><a href="http://localhost/circet/clavier/list_clavie_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
+    <li><a href="list_all.php" class="all">All</a></li>
+    <li><a href="list_use_clavie.php" class="in-use">In Use</a></li>
+    <li><a href="list_retour_clavie.php" class="in-maintenance">ROTEUR</a></li>
+    <li><a href="list_clavie_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
   </ul>
 </nav>
 <h1>clavie retour List</h1>

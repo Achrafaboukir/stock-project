@@ -1,12 +1,12 @@
 <?php require 'nav.php' ;?><br><br>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/PC/liste_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/PC/list_use.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/PC/list_maintenance.php" class="in-maintenance">In Maintenance</a></li>
-    <li><a href="http://localhost/circet/PC/list_stock.php" class="all">stock</a></li>
-    <li><a href="http://localhost/circet/PC/list_retour.php" class="all">retour</a></li>
-    <li><a href="http://localhost/circet/PC/list_pc_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
+    <li><a href="liste_all.php" class="all">All</a></li>
+    <li><a href="list_use.php" class="in-use">In Use</a></li>
+    <li><a href="list_maintenance.php" class="in-maintenance">In Maintenance</a></li>
+    <li><a href="list_stock.php" class="all">stock</a></li>
+    <li><a href="list_retour.php" class="all">retour</a></li>
+    <li><a href="list_pc_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
 
   </ul>
 </nav><br><br>
@@ -149,7 +149,6 @@
 				<th>Date de formatage</th>
         <th>Manager</th>
         <th>Pilote</th>
-				<th>Site</th>
 				<th>Type PC</th>
 				<th>Marque PC</th>
 				<th>codebar</th>
@@ -200,7 +199,8 @@ if (!empty($prenom)) {
 			}
 			while ($row = mysqli_fetch_assoc($result)) { // Loop through the result and output the data
                 echo "<tr>";
-                echo "<td><a href='http://localhost/circet/info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+                echo "<td><a href='info.php?codebar=".$row['codebar']."'>".$row['codebar']."</a></td>";
+                echo "<td>".$row['NSerie']."</td>";
                 echo "<td>".$row['localisation']."</td>";
                 echo "<td>".$row['Matricule']."</td>";
                 echo "<td>".$row['Nom']."</td>";
@@ -210,10 +210,8 @@ if (!empty($prenom)) {
                 echo "<td>".$row['Date_de_formatage']."</td>";
                 echo "<td>".$row['Manager']."</td>";
                 echo "<td>".$row['Pilote']."</td>";
-                echo "<td>".$row['Site']."</td>";
                 echo "<td>".$row['Type_PC']."</td>";
                 echo "<td>".$row['Marque_PC']."</td>";
-                echo "<td>".$row['NSerie']."</td>";
                 echo "<td>".$row['CPU']."</td>";
                 echo "<td>".$row['RAM']."</td>";
                 echo "<td>".$row['DD']."</td>";
@@ -222,7 +220,7 @@ if (!empty($prenom)) {
                 echo "<td>".$row['Mac_WIFI']."</td>";
                 echo "<td>".$row['Ancien_Nom_machine']."</td>";
                 echo "<td>".$row['Using_date']."</td>";
-                echo "<td>".$row['affictaion']."</td>";
+                echo "<td><a href='affictation.php?codebar=".$row['codebar']."'>".$row['affictaion']." affictation"."</a></td>";
 				        echo "<td>".$row['date_added_to_stock']."</td>";
                 echo "<td>";
                 echo "<a href='update_pc.php?etat=".$row['etat']."&localisation=".$row['localisation']."&Matricule=".$row['Matricule']."&Nom=".$row['Nom']."&Prénom=".$row['Prénom']."&codebar=".$row['codebar']."&Nom_de_Machine=".$row['Nom_de_Machine']."&Date_de_formatage=".$row['Date_de_formatage']."&Manager=".$row['Manager']."&Pilote=".$row['Pilote']."&Site=".$row['Site']."&Type_PC=".$row['Type_PC']."&Marque_PC=".$row['Marque_PC']."&NSerie=".$row['NSerie']."&CPU=".$row['CPU']."&RAM=".$row['RAM']."&DD=".$row['DD']."&GPU=".$row['GPU']."&Mac_ethernet=".$row['Mac_ethernet']."&Mac_WIFI=".$row['Mac_WIFI']."&Ancien_Nom_machine=".$row['Ancien_Nom_machine']."&Using_date=".$row['Using_date']."&affictaion=".$row['affictaion']."&date_added=".$row['date_added_to_stock']."'>Update</a>";

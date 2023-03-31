@@ -3,12 +3,12 @@
 <head><?php require 'nav.php' ;?>
 <nav class=nav>
   <ul>
-    <li><a href="http://localhost/circet/PC/liste_all.php" class="all">All</a></li>
-    <li><a href="http://localhost/circet/PC/list_use.php" class="in-use">In Use</a></li>
-    <li><a href="http://localhost/circet/PC/list_maintenance.php" class="in-maintenance">In Maintenance</a></li>
-    <li><a href="http://localhost/circet/PC/list_stock.php" class="all">stock</a></li>
-    <li><a href="http://localhost/circet/PC/list_retour.php" class="all">retour</a></li>
-    <li><a href="http://localhost/circet/PC/list_pc_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
+    <li><a href="liste_all.php" class="all">All</a></li>
+    <li><a href="list_use.php" class="in-use">In Use</a></li>
+    <li><a href="list_maintenance.php" class="in-maintenance">In Maintenance</a></li>
+    <li><a href="list_stock.php" class="all">stock</a></li>
+    <li><a href="list_retour.php" class="all">retour</a></li>
+    <li><a href="list_pc_deleted.php" class="in-maintenance">ENDOMAGER</a></li>
   </ul>
 </nav><br><br>
 <form class="form" method="post" action="list_pc_deleted.php">

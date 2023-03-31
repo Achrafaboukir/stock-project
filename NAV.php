@@ -29,6 +29,9 @@ li {
 .a:hover {
   background-color: #555;
 }
+.dropdown li{
+  margin-bottom:10px;
+}
 </style>
 
 <?php 
@@ -39,18 +42,39 @@ li {
         ?>
 <nav>
   <ul>
-    <li><a class='a' href="http://localhost/circet/PC/liste_all.php">PC</a></li>
-    <li><a class='a' href="http://localhost/circet/souris/list_all.php">SOURIS</a></li>
-    <li><a class='a' href="http://localhost/circet/ram/list_all.php">RAM</a></li>
-    <li><a class='a' href="http://localhost/circet/discdur/list_all.php">DISCDUR</a></li>
-    <li><a class='a' href="http://localhost/circet/clavier/list_all.php">CLAVIE</a></li>
-    <li><a class='a' href="http://localhost/circet/cable/list_all.php">CABLE</a></li>
-    <li><a class='a' href="http://localhost/circet/ecran/list_all.php">ECRAN</a></li>
-    <li><a class='a' href="http://localhost/circet/adaptateur/list_all.php">ADAPTATEUR</a></li>
+    <li><a class='a' href="PC/liste_all.php">PC</a></li>
+    <li><a class='a' href="souris/list_all.php">SOURIS</a></li>
+    <li class="dropdown">
+    <a href="#" class="dropdown-toggle a" data-toggle="dropdown">Composante<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a class='a' href="ram/list_all.php">RAM</a></li>
+          <li><a class='a' href="discdur/list_all.php">DISQUE DUR</a></li>
+          <li><a class='a' href="clavier/list_all.php">CLAVIE</a></li>
+          <li><a class='a' href="cable/list_all.php">CABLE</a></li>
+          <li><a class='a' href="adaptateur/list_all.php">ADAPTATEUR</a></li>
+
+        </ul>
+      </li>
+    <li><a class='a' href="ecran/list_all.php">ECRAN</a></li>
+    <li><a class='a' href="adaptateur/list_all.php">ADAPTATEUR</a></li>
 
 
   </ul>
 </nav>
+<style>
+  .dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color : #333;
+  padding: 20px 20px;
+  margin-bottom:5px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+</style>
 <?php    }}
 ?>
 
@@ -62,16 +86,37 @@ li {
         ?>
 <nav>
   <ul>
-    <li><a class='a' href="http://localhost/circet/PC/list_stock.php">PC</a></li>
-    <li><a class='a' href="http://localhost/circet/souris/liste_souris.php">SOURIS</a></li>
-    <li><a class='a' href="http://localhost/circet/ram/liste_ram.php">RAM</a></li>
-    <li><a class='a' href="http://localhost/circet/discdur/liste_discdur.php">DISCDUR</a></li>
-    <li><a class='a' href="http://localhost/circet/clavier/liste_clavier.php">CLAVIE</a></li>
-    <li><a class='a' href="http://localhost/circet/cable/liste_cable.php">CABLE</a></li>
-    <li><a class='a' href="http://localhost/circet/ecran/liste_ecran.php">ECRAN</a></li>
-    <li><a class='a' href="http://localhost/circet/adaptateur/liste_adaptateur.php">ADAPTATEUR</a></li>
+    <li><a class='a' href="PC/list_stock.php">PC</a></li>
+    <li><a class='a' href="souris/liste_souris.php">SOURIS</a></li>
+    <li class="dropdown">
+    <a href="#" class="dropdown-toggle a" data-toggle="dropdown">Composante<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+
+    <li><a class='a' href="ram/liste_ram.php">RAM</a></li>
+    <li><a class='a' href="discdur/liste_discdur.php">DISCDUR</a></li>
+    <li><a class='a' href="clavier/liste_clavier.php">CLAVIE</a></li>
+    <li><a class='a' href="cable/liste_cable.php">CABLE</a></li>
+    <li><a class='a' href="adaptateur/liste_adaptateur.php">ADAPTATEUR</a></li>
+
+    </ul>
+      </li>
+    <li><a class='a' href="ecran/liste_ecran.php">ECRAN</a></li>
   </ul>
 </nav>
+<style>
+  .dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color : #333;
+  padding: 20px 20px;
+  margin-bottom:5px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+</style>
 <?php    }}
 ?>
 
@@ -83,7 +128,7 @@ li {
         ?>
 <nav>
   <ul>
-    <li><a class='a' href="http://localhost/circet/PC/list_maintenance.php">PC</a></li>
+    <li><a class='a' href="PC/list_maintenance.php">PC</a></li>
 
   </ul>
 </nav>
@@ -98,16 +143,36 @@ li {
         ?>
 <nav>
   <ul>
-    <li><a class='a' href="http://localhost/circet/PC/list_retour.php">PC</a></li>
-    <li><a class='a' href="http://localhost/circet/souris/list_retour_souris.php">SOURIS</a></li>
-    <li><a class='a' href="http://localhost/circet/ram/list_retour_ram.php">RAM</a></li>
-    <li><a class='a' href="http://localhost/circet/discdur/list_retour_discdur.php">DISCDUR</a></li>
-    <li><a class='a' href="http://localhost/circet/clavier/list_retour_clavie.php">CLAVIE</a></li>
-    <li><a class='a' href="http://localhost/circet/cable/list_retour_cable.php">CABLE</a></li>
-    <li><a class='a' href="http://localhost/circet/ecran/list_retour_ecran.php">ECRAN</a></li>
-    <li><a class='a' href="http://localhost/circet/adaptateur/list_retour_adaptateur.php">ADAPTATEUR</a></li>
+    <li><a class='a' href="PC/list_retour.php">PC</a></li>
+    <li><a class='a' href="souris/list_retour_souris.php">SOURIS</a></li>
+    <li class="dropdown">
+    <a href="#" class="dropdown-toggle a" data-toggle="dropdown">Composante<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+    <li><a class='a' href="ram/list_retour_ram.php">RAM</a></li>
+    <li><a class='a' href="discdur/list_retour_discdur.php">DISCDUR</a></li>
+    <li><a class='a' href="clavier/list_retour_clavie.php">CLAVIE</a></li>
+    <li><a class='a' href="cable/list_retour_cable.php">CABLE</a></li>
+    <li><a class='a' href="adaptateur/list_retour_adaptateur.php">ADAPTATEUR</a></li>
+
+    </ul>
+      </li>
+    <li><a class='a' href="ecran/list_retour_ecran.php">ECRAN</a></li>
   </ul>
 </nav>
+<style>
+  .dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color : #333;
+  padding: 20px 20px;
+  margin-bottom:5px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+</style>
 <?php    }}
 ?>
 
@@ -119,15 +184,35 @@ li {
         ?>
 <nav>
   <ul>
-    <li><a class='a' href="http://localhost/circet/PC/list_pc_deleted.php">PC</a></li>
-    <li><a class='a' href="http://localhost/circet/souris/liste_souris_deleted.php">SOURIS</a></li>
-    <li><a class='a' href="http://localhost/circet/ram/liste_ram_deleted.php">RAM</a></li>
-    <li><a class='a' href="http://localhost/circet/discdur/liste_discdur_deleted.php">DISCDUR</a></li>
-    <li><a class='a' href="http://localhost/circet/clavier/list_clavie_deleted.php">CLAVIE</a></li>
-    <li><a class='a' href="http://localhost/circet/cable/liste_cable_deleted.php">CABLE</a></li>
-    <li><a class='a' href="http://localhost/circet/ecran/liste_ecran_deleted.php">ECRAN</a></li>
-    <li><a class='a' href="http://localhost/circet/adaptateur/liste_adaptateur_deleted.php">ADAPTATEUR</a></li>
+    <li><a class='a' href="PC/list_pc_deleted.php">PC</a></li>
+    <li><a class='a' href="souris/liste_souris_deleted.php">SOURIS</a></li>
+    <li class="dropdown">
+    <a href="#" class="dropdown-toggle a" data-toggle="dropdown">Composante<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+    <li><a class='a' href="ram/liste_ram_deleted.php">RAM</a></li>
+    <li><a class='a' href="discdur/liste_discdur_deleted.php">DISCDUR</a></li>
+    <li><a class='a' href="clavier/list_clavie_deleted.php">CLAVIE</a></li>
+    <li><a class='a' href="cable/liste_cable_deleted.php">CABLE</a></li>
+        <li><a class='a' href="adaptateur/liste_adaptateur_deleted.php">ADAPTATEUR</a></li>
+
+    </ul>
+      </li>
+    <li><a class='a' href="ecran/liste_ecran_deleted.php">ECRAN</a></li>
   </ul>
 </nav>
+<style>
+  .dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color : #333;
+  padding: 20px 20px;
+  margin-bottom:5px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+</style>
 <?php    }}
 ?>
